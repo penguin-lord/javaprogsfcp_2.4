@@ -1,0 +1,36 @@
+<html>
+<pre>
+public class TraceTableDemo {
+    public static void main(String[] args) {
+        // Line 1: Initialization
+        int a = 5, b = 5;
+        
+        // Line 2: Prefix increment (++a) -> a becomes 6, then c gets 6
+        int c = ++a;
+        
+        // Line 3: Postfix increment (b++) -> d gets current b (5), then b becomes 6
+        int d = b++;
+        
+        System.out.println("--- First Block Outputs ---");
+        System.out.println(a); // Output: 6
+        System.out.println(b); // Output: 6
+        System.out.println(c); // Output: 6
+        System.out.println(d); // Output: 5
+        
+        // Line 8: Prefix decrement (--a) -> a becomes 5, then e gets 5
+        int e = --a;
+        
+        // Line 9: Postfix decrement (b--) -> f gets current b (6), then b becomes 5
+        int f = b--;
+        
+        System.out.println("\n--- Second Block Outputs ---");
+        System.out.println(a); // Output: 5
+        System.out.println(b); // Output: 5
+        System.out.println(e); // Output: 5
+        System.out.println(f); // Output: 6
+    }
+}
+
+
+</pre>
+</html>
