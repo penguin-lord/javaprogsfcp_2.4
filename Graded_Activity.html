@@ -1,0 +1,63 @@
+<html>
+<pre>
+import java.util.Scanner;
+
+public class OperatorCalculator {
+
+    public static void main(String[] args) {
+        var scanner = new Scanner(System.in);
+
+        System.out.println("=== Special Java Operator Calculator ===");
+        System.out.print("Enter first number: ");
+        var num1 = scanner.nextDouble();
+
+        System.out.print("Enter an operator (+, -, *, /, ^, r): ");
+        char operator = scanner.next().charAt(0);
+
+        // Second number isn't strictly needed for square root ('r'), 
+        // but we'll keep the prompt or handle it gracefully.
+        double num2 = 0;
+        if (operator != 'r') {
+            System.out.print("Enter second number: ");
+            num2 = scanner.nextDouble();
+        }
+
+        // 1. Using IF-ELSE (Relational & Logical Operators Check)
+        if (operator == '/' && num2 == 0) {
+            System.out.println("Error: Division by zero is not allowed!");
+        } else {
+            try {
+                // 2. Using MODERN SWITCH (Arithmetic Operations Mapping)
+                double result = switch (operator) {
+                    case '+' -> num1 + num2;
+                    case '-' -> num1 - num2;
+                    case '*' -> num1 * num2;
+                    case '/' -> num1 / num2;
+                    case '^' -> Math.pow(num1, num2);
+                    case 'r' -> {
+                        if (num1 < 0) {
+                            throw new Exception("Cannot get the square root of a negative number");
+                        }
+                        yield Math.sqrt(num1); // Correctly separated and executed when valid
+                    }
+                    default  -> throw new Exception("Invalid operator!");
+                };
+
+                if (operator == 'r') {
+                    System.out.printf("Result: %.2f = %.2f%n", num1, result);
+                } else {
+                    System.out.printf("Result: %.2f %c %.2f = %.2f%n", num1, operator, num2, result);
+                }
+
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
+
+        scanner.close();
+    }
+}
+
+
+</pre>
+</html>
